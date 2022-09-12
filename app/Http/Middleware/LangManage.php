@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\LangController;
-use App;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class LangManage
 {
@@ -19,7 +20,7 @@ class LangManage
     public function handle(Request $request, Closure $next)
     {
         if(session()->has('lang_code')){
-            App::setLocale(session()->get('lang-code'));
+            App::setLocale(session()->get('lang_code'));
         }
         return $next($request);
     }
